@@ -109,6 +109,14 @@ config AXP313_POWER
 	Select this to enable support for the AXP313 PMIC found on some
 	H616 boards.
 
+config AXP803_POWER
+	bool "axp803 pmic support"
+	depends on MACH_SUN50I
+	select AXP_PMIC_BUS
+	select CMD_POWEROFF
+	---help---
+	Say y here to enable support for the axp803 pmic found on A64 boards.
+
 config AXP809_POWER
 	bool "axp809 pmic support"
 	depends on MACH_SUN9I
@@ -319,7 +327,7 @@ config AXP_ALDO4_VOLT
 
 config AXP_DLDO1_VOLT
 	int "axp pmic dldo1 voltage"
-	depends on AXP221_POWER || AXP809_POWER || AXP818_POWER
+	depends on AXP221_POWER || AXP803_POWER|| AXP809_POWER || AXP818_POWER
 	default 0
 	---help---
 	Set the voltage (mV) to program the axp pmic dldo1 at, set to 0 to
@@ -329,7 +337,7 @@ config AXP_DLDO1_VOLT
 
 config AXP_DLDO2_VOLT
 	int "axp pmic dldo2 voltage"
-	depends on AXP221_POWER || AXP809_POWER || AXP818_POWER
+	depends on AXP221_POWER || AXP803_POWER|| AXP809_POWER || AXP818_POWER
 	default 3000 if MACH_SUN9I
 	default 0
 	---help---
