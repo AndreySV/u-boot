@@ -498,6 +498,10 @@
 	\
 	"boot_syslinux_conf=extlinux/extlinux.conf\0" \
 	"boot_extlinux="                                                  \
+		BOOTENV_RUN_EXTENSION_INIT                                \
+	        "fdt move ${fdtcontroladdr} ${fdt_addr_r};"               \
+		BOOTENV_RUN_EXTENSION_APPLY                               \
+	        "setenv fdtcontroladdr ${fdt_addr_r};"		  \
 		"sysboot ${devtype} ${devnum}:${distro_bootpart} any "    \
 			"${scriptaddr} ${prefix}${boot_syslinux_conf}\0"  \
 	\
